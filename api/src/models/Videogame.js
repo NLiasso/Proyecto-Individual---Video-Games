@@ -1,3 +1,4 @@
+//const router = require('express').Router();
 const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
@@ -8,5 +9,25 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
-};
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    release_date: {
+      type: DataTypes.DATEONLY
+    },
+    rating:{
+      type: DataTypes.ARRAY(DataTypes.INTEGER)
+      // promedio = suma de arr / arr.length -1
+    },
+    plataforms:{
+      type: DataTypes.STRING,
+      allowNull:false
+    },
+    origen: {
+      type: DataTypes.STRING,
+      defaultValue: true
+    }
+  }); 
+}
+
