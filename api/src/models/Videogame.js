@@ -9,6 +9,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true,
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -20,14 +25,19 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.INTEGER)
       // promedio = suma de arr / arr.length -1
     },
-    plataforms:{
-      type: DataTypes.STRING,
+    platforms:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
     },
-    origen: {
+    image: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: true
-    }
+    },
   }); 
 }
 

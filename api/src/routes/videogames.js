@@ -3,6 +3,7 @@ const { Videogame, Genre } = require("../db.js");
 const router = require('express').Router();
 const { Op } = require ("sequelize");
 const axios = require('axios');
+const db = require("../db.js");
 const {API_KEY} = process.env;
 
 // to number= primeros 3 caracteres
@@ -33,17 +34,18 @@ const {API_KEY} = process.env;
 router.get('/', async (req, res, next) => {   
 
     let name = req.query.name
- // Si se pide query, busco por nombre. Pero solo en caso de por nombre. Es mejor preguntar esto primero.
+    // Si se pide query, busco por nombre. Pero solo en caso de por nombre. Es mejor preguntar esto primero.
     if(name) {
         let gamesApi = axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
-        let gamesDb = Videogame.findAll({
+        let gamesDb = await Videogame.findAll({
             where: { name:{ [Op.iLike]: "%" + name + "%" }},
+            include: Genre,
             limit: 15,
         })
         Promise.all([
             gamesApi, 
             gamesDb,
-            //console.log(gameApi/gameDb)
+            //console.log(gamesDb)
         ])
         
         .then((response => {
@@ -59,9 +61,9 @@ router.get('/', async (req, res, next) => {
                     rating: parseFloat(e.rating),
                     platforms: e.platform,
                     background_image: e.background_image,  //Imagen para el front, no borrar
-                    // genres: e.genreGames.map((game) => {
-                    //    return game.name
-                    // }),  REVISAR ESTO
+                    genres: e.genreGames.map((game) => {
+                       return game.name
+                    }), //  REVISAR ESTO
                     createdInDb: e.createdInDb || true   //Forzamos el creado en db a true. Revisar esto
             };
             })
@@ -94,7 +96,13 @@ router.get('/', async (req, res, next) => {
     } else {
         // Voy a priorizar la DB a la API, porque la api es infinita...
         //SUGERENCIA: Establecer manera de identificar vino de api o de DB
-        gamesDb = await Videogame.findAll()
+        gamesDb = await Videogame.findAll({
+            include: {
+                model: Genre,
+                attibutes: ['genre_id', 'genre_name', 'id']
+            }
+        })
+//        console.log(gamesDb)
 
            
            
@@ -122,20 +130,20 @@ router.get('/', async (req, res, next) => {
         
         
         const filterFromDb = gameDb
+        //console.log(filterFromDb)
         const filtDb = filterFromDb.map((dB) => {
         //Este return es de mi DB, ojo
+        
             return {
                 id: dB.id,
                 name: dB.name,
                 description: dB.description,
                 releaseDate: dB.released,
                 rating: dB.rating,
-                platforms: dB.platforms.map(
-                    (dbBis) => dbBis.platform.name
-                ),
+                platforms: dB.platforms,
                 genres: dB.genres.map((genres) => {
-                    return ([genres.name, genres.id])   //// hay que definir con cual nos quedamos despues
-                }),
+                    return ([genres.genre_name, genres.id] // hay que definir con cual nos quedamos despues
+                    )}), 
                 background_image: dB.background_image,  //Esto va a servir para el front, no tocar
                 createdInDb: dB.createdInDb || true     // de esta manera lo vamos a identificar - REVISAR CONEXION CON CODIGO MADRE
        };
@@ -167,7 +175,6 @@ router.get('/', async (req, res, next) => {
 
     }
 })
-
 
 
 

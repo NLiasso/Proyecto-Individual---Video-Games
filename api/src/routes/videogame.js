@@ -1,9 +1,10 @@
 const router = require('express').Router();
 require("dotenv").config();
-const { Videogame } = require("../db.js");
-const { Op } = require ("sequelize");
+const { Videogame, Genre } = require("../db.js");
 const axios = require('axios');
 const {API_KEY} = process.env;
+const { v4: uuidv4 } = require('uuid');
+const { Op } = require ("sequelize");
 
 
 
@@ -20,35 +21,36 @@ router.get('/:id', async (req, res, next) => {
     try {
 
         const id = req.params.id;
-        
+   //     console.log(id)
+        //type oF !integrer = mio.... convertir el id a entero, si me da error entonces es mio.  Number(id)    o ParseInt
         if(id.length > 8) {
             //es mio
-          let  videogame = await Videogame.findByPk(
-            id,
-            { include: GenreGame },
-            
-          );
+            let  videogame = await Videogame.findByPk(
+                id,
+                { include: Genre },
+            );
+            //console.log(videogame.id)
          
-         let videogameData = videogame.dataValues
-         let filterData = {
-                 name: videogameData.name,
-                 id: videogameData.id,
-                 background_image: videogameData.background_image,
-                 description: videogameData.description,
-                 rating: videogameData.rating,
-                 released: videogameData.released,
-                 genres: videogameData.genreGames.map((genre) => {
+            let filterData = {
+                name: videogame.name,
+                id: videogame.id,
+                background_image: videogame.image,
+                description: videogame.description,
+                rating: videogame.rating,
+                released: videogame.released,
+                genres: videogame.genres.map((genre) => {
                     return {
-                        name: genres.name,
+                        name: genre.genre_name,
                         id: genre.id,
                     };
                 }),
-                 platforms: videogameData.platforms
-                
-             }
-         
-         
+                platforms: videogame.platforms
+            }
+            //console.log(filterData)
+            //console.log(videogame.id)
+            
             return res.send(filterData)
+
         } else {
             //es de la api
             const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`) 
@@ -70,6 +72,7 @@ router.get('/:id', async (req, res, next) => {
                     };
                 }),
             };
+
             return res.send(juego)
         }
 
@@ -77,6 +80,47 @@ router.get('/:id', async (req, res, next) => {
     } catch(error) {
         next({error: "Error, el numero no existe"})
     }
+})
+
+
+
+router.post('/', async (req, res, next) =>{
+    const {
+        name, 
+        description, 
+        platforms, 
+        image, 
+        released, 
+        rating, 
+        genre
+      } = req.body;
+
+
+    try{ 
+        // const genreDB = await Genre.findAll({ 
+        //     where: {name: genre},
+        // })
+        // if(genreDB.length !== genre.length){
+        //     return res.json({error: 'Genero no encontrado'})
+        //}
+        
+            const videoGameCreate = await Videogame.create({ 
+            id: uuidv4(),
+            name,
+            description,
+            release_date: released,
+            image,
+            rating,
+            platforms,
+        })
+
+        videoGameCreate.addGenre(genre)
+        res.send('Juego Creado')
+
+    }catch(error){
+        res.status(400).json({message: error})
+    }
+
 })
 
 

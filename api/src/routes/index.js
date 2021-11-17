@@ -1,4 +1,4 @@
-const { Router, application } = require('express');
+const { Router } = require('express');
 require('dotenv').config();
 const videogames = require ('./videogames')
 const videogame = require ('./videogame')
@@ -16,6 +16,7 @@ const router = Router();
 router.use('/videogame', videogame)
 router.use('/videogames', videogames)
 router.use('/genres', genres)
+
 
 //get videogame
 //post videogame
