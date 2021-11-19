@@ -13,7 +13,7 @@ export default function Games (){
     //console.log(games)
     return <div>
             {games.map((game)=>{
-              return <Game name={game.name} image={game.background_image} key={game.id}/>
+              return <Game id= {game.id} name={game.name} image={game.background_image} key={game.id} genres={game.genres}/>
             })}
         </div>
 }

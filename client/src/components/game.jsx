@@ -1,6 +1,11 @@
-export default function Game({name, image}){
+import { Link } from "react-router-dom";
+
+export default function Game({name, image, genres, id, description}){
     return <div> 
-        <h3> {name} </h3>
-        <img src={image} style={{width: '20vw'}} alt= 'portada de juego'/>
+        <Link to={`/${id}`}>
+            <h2> {name} </h2>
+            <img src={image} style={{width: '20vw'}} alt= 'portada de juego'/>
+            <h4> {genres} </h4>
+        </Link>
     </div>
 }

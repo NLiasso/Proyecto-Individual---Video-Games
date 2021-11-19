@@ -10,7 +10,8 @@ const LandingPage = () => {
     <Link to='/home'>
     Explorar Juegos
     </Link>
-    </div>)
+    </div>
+    )
 }
 
 
