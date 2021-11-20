@@ -6,7 +6,8 @@ import Home from './components/Home';
 import Games from './components/games';
 import GameDetail from './components/gameDetail';
 import SearchBar from './components/searchBar';
-import Order from './components/order';
+import OrderByName from './components/orderByName';
+import OrderByRating from './components/OrderByRating';
 import AddGame from './components/addGame';
 
 
@@ -23,7 +24,8 @@ function App() {
             <Link to='/add'>
               Agregar juego
             </Link>
-            <Order/>
+            <OrderByName/>
+            <OrderByRating/>
             <Games/>
           </Route>
           <Route path='/add'>

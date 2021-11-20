@@ -1,5 +1,5 @@
 import { ASCENDENTE } from "../../constantes/sort";
-import { FETCH_GAMES, SEARCH_GAMES, SORT} from "../actions";
+import { FETCH_GAMES, SEARCH_GAMES, SORT_NAME, SORT_RATING} from "../actions";
 
 const initialState = {
     games: [],
@@ -22,10 +22,10 @@ export default function reducer(state = initialState, action){
                 filteredGames: action.payload
             }
 
-        case SORT:
-            let orderedGames = [...state.games]
+        case SORT_NAME:
+            let orderedGamesName = [...state.games]
 
-            orderedGames = orderedGames.sort((a,b)=>{
+            orderedGamesName = orderedGamesName.sort((a,b)=>{
                 if (a.name < b.name){
                     return action.payload === ASCENDENTE? -1: 1;
                 }
@@ -36,8 +36,25 @@ export default function reducer(state = initialState, action){
             })
             return{
                 ...state,
-                filteredGames: orderedGames
+                filteredGames: orderedGamesName
             }
+
+        case SORT_RATING:
+            let orderedGamesRating = [...state.games]
+    
+            orderedGamesRating = orderedGamesRating.sort((a,b)=>{
+                if (a.rating < b.rating){
+                    return action.payload === ASCENDENTE? -1: 1;
+                }
+                if (a.rating > b.rating){
+                    return action.payload === ASCENDENTE? 1: -1;
+                }
+                    return 0
+            })
+                return{
+                    ...state,
+                    filteredGames: orderedGamesRating
+                }
         
         default:
             return state

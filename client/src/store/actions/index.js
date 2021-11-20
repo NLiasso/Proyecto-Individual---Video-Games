@@ -1,7 +1,8 @@
 import axios from 'axios'
 export const FETCH_GAMES = 'FETCH_GAMES'
 export const SEARCH_GAMES = 'SEARCH_GAMES'
-export const SORT = 'SORT'
+export const SORT_NAME = 'SORTNAMES'
+export const SORT_RATING = 'SORTRATING'
 
 
 
@@ -36,9 +37,16 @@ export function searchGames(search){
     }
 }
 
-export function sort(order){
+export function sortByName(order){
     return {
-        type: SORT,
+        type: SORT_NAME,
+        payload: order
+    }
+}
+
+export function sortByRating(order){
+    return {
+        type: SORT_RATING,
         payload: order
     }
 }
