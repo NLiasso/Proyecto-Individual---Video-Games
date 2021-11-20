@@ -142,7 +142,7 @@ router.get('/', async (req, res, next) => {
                 rating: dB.rating,
                 platforms: dB.platforms,
                 genres: dB.genres.map((genres) => {
-                    return ([genres.genre_name, genres.id] // hay que definir con cual nos quedamos despues
+                    return ([genres.genre_name] // hay que definir con cual nos quedamos despues //genres.id
                     )}), 
                 background_image: dB.background_image,  //Esto va a servir para el front, no tocar
                 createdInDb: dB.createdInDb || true     // de esta manera lo vamos a identificar - REVISAR CONEXION CON CODIGO MADRE
@@ -161,12 +161,12 @@ router.get('/', async (req, res, next) => {
                 platforms: fak.platforms.map((fakBis) => fakBis.platform.name),
                 background_image: fak.background_image,
                 genres: fak.genres.map((genres) => {
-                    return ([genres.name, genres.id] // hay que definir con cual nos quedamos despues
+                    return ([genres.name] // hay que definir con cual nos quedamos despues // genres.id
                     )}), 
             };
         })
         
-        let allVideogames = [filtDb, filterFromApi]
+        let allVideogames = [...filtDb, ...filterFromApi]
 
         res.send(allVideogames).status(200)
     })
