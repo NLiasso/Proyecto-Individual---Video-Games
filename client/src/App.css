@@ -1,9 +1,11 @@
 .App {
+  background-image: url('fondo.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.95;
   text-align: center;
-  background-image: url(https://images.wallpapersden.com/image/download/geometric-shapes-pattern_bGlraG6UmZqaraWkpJRobWllrWdma2U.jpg);
-  background-position: top;
-  background-repeat: repeat;
-  background-size: 100vh;
 }
 
 .App-logo {
@@ -32,6 +34,50 @@
   color: #61dafb;
 }
 
+.divGames{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.cartasIndividuales{
+  width: 300px;
+  background-color: honeydew;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cartasIndividuales :hover{
+  color: rgb(126, 14, 14);
+  background-color: #f34b09;
+  border-color: #a31508;
+  box-shadow: 8px 8px 16px rgba(187, 3, 3, 0.829),
+  -8px -8px 16px rgba(160, 1, 1, 0.8);
+}
+
+
+.textoDeCartas{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: rgb(218, 0, 0);
+  border-radius: 12px;
+}
+
+.cartasIndividuales img{
+  width: max-content;
+  border-radius: 12px;
+}
+
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -40,3 +86,4 @@
     transform: rotate(360deg);
   }
 }
+

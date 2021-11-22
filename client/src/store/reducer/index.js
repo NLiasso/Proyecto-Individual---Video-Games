@@ -62,9 +62,12 @@ export default function reducer(state = initialState, action){
                         return {...state, filteredGames: state.games.filter((game)=> (typeof game.id) === 'number')}
                         }
                     else {
+                        //console.log(action.payload)
                         return {...state, filteredGames: state.games.filter((game) => {
                             return game.genres.find((genre) => {
-                                return genre === action.payload})
+                                //console.log(genre[0])
+                                return genre[0] === action.payload
+                            })
                         })}
                     };
 

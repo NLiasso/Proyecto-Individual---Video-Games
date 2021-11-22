@@ -20,8 +20,9 @@ function App() {
           <Route exact path='/'>
             <LandingPage/>
           </Route>
-          <Route exact path='/home'>
-            <SearchBar/>
+          <Route exact path='/home' >
+            <div>
+              <SearchBar/>
             <Link to='/add'>
               Agregar juego
             </Link>
@@ -29,6 +30,7 @@ function App() {
             <OrderByRating/>
             <FilteredBy/>
             <Games/>
+            </div>
           </Route>
           <Route path='/add'>
             <AddGame/>

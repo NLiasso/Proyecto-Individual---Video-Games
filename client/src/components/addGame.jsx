@@ -21,7 +21,7 @@ export default function AddGame(){
         released:"",
         rating:"",
         genres:[],
-      //  genrename:[]
+        genrename:[]
 
     }) // controlar plataformas y generos!!! 
     const [errors, setErrors] = useState({})
@@ -76,10 +76,12 @@ export default function AddGame(){
 
         }
         function handleSelection(e){
-            //console.log(e.target.genrename)
-            setInput({
+            const {options, selectedIndex} = e.target
+           // console.log(options[selectedIndex].text)
+           input["genrename"].push(options[selectedIndex].text)
+           
+           setInput({
                 ...input,
-//                 genrename: [...input.genrename, e.target.text],
                 genres : [...input.genres, parseInt(e.target.value)]
             })
            setErrors(validate({
@@ -236,7 +238,7 @@ export default function AddGame(){
             <div >
                 <h4>Genres selected:</h4>
             {
-            input.genres.map(el => 
+            input.genrename.map(el => 
                 <div>
                     <p>{el}</p>
                     <button onClick={(e)=> handleDelete(el)} id="but123" >x</button>
