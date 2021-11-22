@@ -1,0 +1,122 @@
+@media (min-width: 768px) {
+    .body {
+      background-image: url(https://miracomosehace.com/wp-content/uploads/2020/04/MCSH1967-3.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+    }
+  }
+  .landing {
+    padding: 4rem;
+    background-image: url(https://acf.geeknetic.es/imgw/imagenes/auto/2020/5/7/bl5-ea-ps5-xbox-x.jpg?f=webp&s=b);
+    color:darkred;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    position: center;
+  }
+
+  .principal{
+    background-color: rgba(133, 45, 11, 0.705);
+    width: max-content;
+    height: max-content;
+    position: center;
+    border-radius: 20px;
+
+    
+}
+.principal:hover {
+    color: rgb(53, 35, 21);
+    background-color: rgba(149, 60, 25, 0.705);
+    border-color: #6e3602;
+    box-shadow: 8px 8px 16px rgba(192, 133, 24, 0.678),
+    -8px -8px 16px rgba(212, 198, 0, 0.5);
+    width: max-content;
+    height: max-content;
+    text-align: center;
+    position: center;
+}
+
+
+
+  h1 {
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    color: #f1eaef;
+    font-weight: 400;
+    position: center;
+    text-align: center;
+    
+  }
+
+  
+
+  h3 {
+    font-family: "Lato", sans-serif;
+    font-size: 0.8rem;
+    color: #f1eaef;
+    font-weight: 400;
+    margin-left: 1rem;
+  }
+  @media (min-width: 458px) {
+    h1 {
+      font-family: "Lato", sans-serif;
+      font-size: 2rem;
+      color: #f1eaef;
+      font-weight: 400;
+    }
+    h3 {
+      font-family: "Lato", sans-serif;
+      font-size: 1.2rem;
+      color: #f1eaef;
+      font-weight: 400;
+      margin-left: 1rem;
+    }
+  }
+  .button {
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    border: hidden;
+    margin-left: 1rem;
+  }
+  .button:hover {
+    color: red;
+    border-radius: 0.3rem;
+    border: hidden;
+    cursor: pointer;
+  }
+  
+  .buscador {
+    margin-top: 4rem;
+  }
+  .boton {
+    padding-top: 3rem;
+  }
+  p {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma,
+      Sans-Serif;
+  }
+  
+  .spinner {
+    border: 6px solid rgba(35, 194, 243, 0.842);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-left-color: #a3969a;
+    margin: 0 auto;
+    margin-top: 20px;
+    animation: spin 1.3s ease infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(10deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url(https://images.wallpapersden.com/image/download/geometric-shapes-pattern_bGlraG6UmZqaraWkpJRobWllrWdma2U.jpg);
+  background-position: top;
+  background-repeat: repeat;
+  background-size: 100vh;
 }
 
 .App-logo {

@@ -9,6 +9,7 @@ import SearchBar from './components/searchBar';
 import OrderByName from './components/orderByName';
 import OrderByRating from './components/OrderByRating';
 import AddGame from './components/addGame';
+import FilteredBy from './components/filteredBy';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             </Link>
             <OrderByName/>
             <OrderByRating/>
+            <FilteredBy/>
             <Games/>
           </Route>
           <Route path='/add'>

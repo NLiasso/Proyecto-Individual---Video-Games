@@ -34,10 +34,10 @@ router.get('/:id', async (req, res, next) => {
             let filterData = {
                 name: videogame.name,
                 id: videogame.id,
-                background_image: videogame.image,
+                background_image: videogame.background_image,
                 description: videogame.description,
                 rating: videogame.rating,
-                released: videogame.released,
+                released: videogame.release_date,
                 genres: videogame.genres.map((genre) => {
                     return {
                         name: genre.genre_name,
@@ -89,10 +89,10 @@ router.post('/', async (req, res, next) =>{
         name, 
         description, 
         platforms, 
-        image, 
-        released, 
+        background_image, 
+        released,
         rating, 
-        genre
+        genres
       } = req.body;
 
 
@@ -109,16 +109,17 @@ router.post('/', async (req, res, next) =>{
             name,
             description,
             release_date: released,
-            image,
+            background_image,
             rating,
             platforms,
         })
 
-        videoGameCreate.addGenre(genre)
+        videoGameCreate.addGenres(genres)
         res.send('Juego Creado')
 
     }catch(error){
         res.status(400).json({message: error})
+        //console.log(error)
     }
 
 })

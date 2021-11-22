@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import styles from './game.css'
 
-export default function Game({name, image, genres, id, description}){
-    console.log(genres)
-    return <div> 
+export default function Game({name, image, genres, id}){
+    //console.log(genres)
+    return <div className={styles.cards} > 
         <Link to={`/${id}`}>
             <h2> {name} </h2>
         </Link>

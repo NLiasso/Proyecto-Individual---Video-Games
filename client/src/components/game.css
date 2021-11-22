@@ -1,0 +1,58 @@
+.cards{
+   
+    border-radius: 0px;
+    width:100px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.308);
+    margin-bottom: 20px;
+   
+    
+   
+     
+ }
+ .cards:hover{
+     -webkit-transform: scale(1.1);
+     transform: scale(1.1)
+ }
+ .link{
+     text-decoration: none;
+ }
+ h3 {
+     color: white;
+     text-align: center;
+     width:190px;
+     height: 35px;
+     font-size: 1.3rem !important;
+ }
+ p {
+     color: white;
+     padding-top: 1px;
+     display: inline;
+     padding-right: 6px;
+     width:190px;
+     height: 30px;
+     font-size: 1rem;
+    
+ }
+ img {
+     width:100%;
+      height:60%;
+     margin-bottom: 1px;
+      border-radius: 0px;
+      margin-top:0px
+ }
+ .lele{
+   margin-top:20px
+ }
+ .names{
+     width: 190px;
+     height: 50px;
+ }
+ .genre{
+    padding-bottom: 20px;
+    width:30px
+   
+ }
+ .namer{
+ color: white;
+ }

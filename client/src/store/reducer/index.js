@@ -1,9 +1,14 @@
-import { ASCENDENTE } from "../../constantes/sort";
-import { FETCH_GAMES, SEARCH_GAMES, SORT_NAME, SORT_RATING} from "../actions";
+import { ASCENDENTE, GET_GENRES } from "../../constantes/sort";
+import { FETCH_GAMES,
+     SEARCH_GAMES,
+     SORT_NAME,
+     SORT_RATING,
+     FILTER_BY} from "../actions/index.js";
 
 const initialState = {
     games: [],
-    filteredGames: []
+    filteredGames: [],
+    genres: [],
 }
 
 export default function reducer(state = initialState, action){
@@ -13,8 +18,15 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 games: action.payload,
-                filteredGames: action.payload
+                filteredGames: action.payload,
             }
+
+        case GET_GENRES:
+                return{
+                    ...state,
+                    genres: action.payload,
+                    
+                }    
 
         case SEARCH_GAMES:
             return{
@@ -38,6 +50,24 @@ export default function reducer(state = initialState, action){
                 ...state,
                 filteredGames: orderedGamesName
             }
+
+            case FILTER_BY:
+                    if (action.payload === 'default'){
+                        return {...state, filteredGames: state.games}
+                        }
+                    if(action.payload === 'DB'){
+                        return {...state, filteredGames: state.games.filter((game)=> (typeof game.id) === 'string')}
+                        }
+                    if(action.payload === 'API'){
+                        return {...state, filteredGames: state.games.filter((game)=> (typeof game.id) === 'number')}
+                        }
+                    else {
+                        return {...state, filteredGames: state.games.filter((game) => {
+                            return game.genres.find((genre) => {
+                                return genre === action.payload})
+                        })}
+                    };
+
 
         case SORT_RATING:
             let orderedGamesRating = [...state.games]

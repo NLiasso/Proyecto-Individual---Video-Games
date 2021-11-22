@@ -1,5 +1,5 @@
 //const router = require('express').Router();
-const { DataTypes } = require('sequelize');
+const { DataTypes, NUMBER } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -19,17 +19,17 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     release_date: {
-      type: DataTypes.DATEONLY
+      type: DataTypes.DATE
     },
     rating:{
-      type: DataTypes.ARRAY(DataTypes.INTEGER)
+      type: DataTypes.DECIMAL({length: 6, decimals: 2}, )
       // promedio = suma de arr / arr.length -1
     },
     platforms:{
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
     },
-    image: {
+    background_image: {
       type: DataTypes.STRING,
       allowNull: false
     },
