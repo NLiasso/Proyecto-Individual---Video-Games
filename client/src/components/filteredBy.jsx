@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { orderBy, filterBy, getGenres } from '../store/actions/index'
 import './FilterBy.css'
 
+
 function FilteredBy({orderBy, genres, filterBy, getGenres}) {
 
     useEffect (()=>{

@@ -111,11 +111,13 @@ router.get('/', async (req, res, next) => {
        let page1 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data;
        let page2 = (await axios.get(page1.next)).data;
        let page3 = (await axios.get(page2.next)).data;
+       let page4 = (await axios.get(page3.next)).data;
+       let page5 = (await axios.get(page4.next)).data;
  
     
 
     Promise.all([
-        page1,page2,page3,gamesDb
+        page1,page2,page3,page4,page5,gamesDb
     ])
     .then((respuesta) => {
        
@@ -123,10 +125,12 @@ router.get('/', async (req, res, next) => {
              page1,
              page2,
              page3,
+             page4,
+             page5,
              gameDb
         ] = respuesta
          
-        juegosDeApiPages= [...page1.results,...page2.results,...page3.results]
+        juegosDeApiPages= [...page1.results,...page2.results,...page3.results,...page4.results,...page5.results]
         
         
         const filterFromDb = gameDb

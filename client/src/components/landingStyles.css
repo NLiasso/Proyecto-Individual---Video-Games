@@ -2,18 +2,18 @@
     .body {
       background-image: url(https://miracomosehace.com/wp-content/uploads/2020/04/MCSH1967-3.jpg);
       background-repeat: no-repeat;
-      background-size: cover;
-      min-height: 100vh;
+      background-size: auto
     }
   }
   .landing {
-    padding: 4rem;
+    padding: 40px;
     background-image: url(https://acf.geeknetic.es/imgw/imagenes/auto/2020/5/7/bl5-ea-ps5-xbox-x.jpg?f=webp&s=b);
     color:darkred;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 90vh;
     position: center;
+    
   }
 
   .principal{
@@ -37,12 +37,102 @@
     position: center;
 }
 
+.btn-neonPrincipal{
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: rgba(0, 0, 0, 0.705);
+  color: rgba(255, 255, 255, 0);
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+  margin-top: 200px;
+  margin-bottom: 10px;
+  transition: 0.6s;
 
+}
+
+.btn-neonPrincipal:hover{
+  background: #a945c7;
+  box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+  transition-delay: 0.1s;
+}
+
+.btn-neon{
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.6s;
+}
+.btn-neon:hover{
+  background: #a945c7;
+  box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+  transition-delay: 0.1s;
+}
+.btn-neon span{
+  position: absolute;
+  display: block;
+}
+#span1{
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent,#a945c7);
+}
+.btn-neon:hover #span1{
+  left: 100%;
+  transition: 1s;
+}
+#span3{
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent,#a945c7);
+}
+.btn-neon:hover #span3{
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+#span2{
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#a945c7);
+}
+.btn-neon:hover #span2{
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+#span4{
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#a945c7);
+}
+.btn-neon:hover #span4{
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
 
   h1 {
     font-family: "Lato", sans-serif;
     font-size: 1.1rem;
-    color: #f1eaef;
+    color: black;
     font-weight: 400;
     position: center;
     text-align: center;
@@ -54,7 +144,7 @@
   h3 {
     font-family: "Lato", sans-serif;
     font-size: 0.8rem;
-    color: #f1eaef;
+    color: #000000;
     font-weight: 400;
     margin-left: 1rem;
   }
@@ -62,7 +152,7 @@
     h1 {
       font-family: "Lato", sans-serif;
       font-size: 2rem;
-      color: #f1eaef;
+      color: #000000;
       font-weight: 400;
     }
     h3 {

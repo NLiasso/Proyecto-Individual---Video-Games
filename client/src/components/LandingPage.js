@@ -5,12 +5,18 @@ import "./landingStyles.css";
 const LandingPage = () => {
     return (
     <div className="landing">
-    <h1 >
+    <div className='btn-neonPrincipal'>
         Pagina Inicial
-    </h1>
-    <Link to='/home' className='principal'>
+    </div>
+    <br></br>
+        
+    <Link to='/home' className='btn-neon'>
     Explorar Juegos
     </Link>
+    <span id="span1"></span>
+        <span id="span2"></span>
+        <span id="span3"></span>
+        <span id="span4"></span>
     </div>
     )
 }

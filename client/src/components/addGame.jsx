@@ -4,6 +4,7 @@ import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchGame, getGenres, postGame } from '../store/actions/index';
+import './addgame.css'
 
 
 
@@ -129,9 +130,9 @@ export default function AddGame(){
     return(
         <div >
             <div >
-            <Link to="/home"><button>Go Back</button></Link>
-            <form  onSubmit={(e)=>handleSubmit(e)} >
+            <Link to="/home"><button>HOME</button></Link>
             <h1 >Crea tu videojuego!</h1>
+            <form  onSubmit={(e)=>handleSubmit(e)} className='formulario'>
                 <div>
                     <label>Name:</label>
                         <input 

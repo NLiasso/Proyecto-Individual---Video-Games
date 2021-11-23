@@ -1,11 +1,14 @@
 .App {
-  background-image: url('fondo.jpg');
+  /*background-image: url('fondo.jpg');*/
+  /*background-image: url(https://cdn.wallpapersafari.com/60/57/Wf6e84.png);*/
+  background-image: url(https://c.wallhere.com/photos/ad/c7/low_poly_abstract-23514.jpg!d);
   background-position: center;
-  background-size: cover;
+  background-size:cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  opacity: 0.95;
   text-align: center;
+  min-height: 100vh;
+  position: center;
 }
 
 .App-logo {
@@ -34,45 +37,129 @@
   color: #61dafb;
 }
 
+
+.divTitulos{
+  font-weight:900;
+  color: black;
+  font-size: 24px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.divGenres{
+  align-self: center;
+  align-content: center;
+  font-weight:600;
+  color: black;
+  font-size:auto;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+
 .divGames{
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   margin-top: 60px;
   padding: 20px;
+  
 }
 
 .cartasIndividuales{
-  width: 300px;
-  background-color: honeydew;
+  font-family: monospace;
+  text-align: center;
+  text-decoration:none;
+  color:black;
+  width: 16vw;
+  height: 30vh;
+  background-color: rgba(92, 50, 50, 0.596);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.cartasIndividuales :hover{
+  color: rgb(0, 0, 0);
+  border-color: #be0303d5;
+  /* box-shadow: 8px 8px 16px rgba(121, 0, 0, 0.852),
+  -8px -8px 16px rgba(160, 1, 1, 0.8);  */
+}
+
+.cartasIndividuales img{
+  width: fit-content;
+  border-radius: 12px;
+}
+
+
+.detalleDeJuego{
+  width: min-content;
+  background-color: rgba(73, 0, 0, 0.801);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cartasIndividuales :hover{
-  color: rgb(126, 14, 14);
-  background-color: #f34b09;
-  border-color: #a31508;
-  box-shadow: 8px 8px 16px rgba(187, 3, 3, 0.829),
-  -8px -8px 16px rgba(160, 1, 1, 0.8);
+.detalleDeJuego img{
+  width: min-content;
+  height: min-content;
+  background-color: rgba(73, 0, 0, 0.801);
+  border-radius: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.detalleDeJuego button{
+  background-color:transparent;
+  border-color: #ffffff69;
+
+}
+
+.detalleDeJuego button :hover{
+border-color: white;
 }
 
 
 .textoDeCartas{
-  width: fit-content;
-  height: fit-content;
+  width: min-content;
+  height: min-content;
   display: flex;
   align-items: center;
-  background-color: rgb(218, 0, 0);
+  /*background-color: rgba(73, 0, 0, 0.801);*/
   border-radius: 12px;
 }
 
-.cartasIndividuales img{
-  width: max-content;
-  border-radius: 12px;
+.textoDeCartas :visited{
+color: black
 }
+
+.textoDeCartas :link{
+  color: black
+  }
+
+
+.paginadoDiv{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  
+}
+.paginado {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
 
 
 

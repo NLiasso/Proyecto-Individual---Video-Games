@@ -18,7 +18,7 @@ export default function GameDetail(){
             setGame(null)
         } // clean up
     }, [])
-        return <div> 
+        return <div className='detalleDeJuego'> 
                 <Link to='/home'>
             <button>To Home</button>
             </Link>
