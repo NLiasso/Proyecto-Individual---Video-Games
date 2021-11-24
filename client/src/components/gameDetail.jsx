@@ -3,6 +3,8 @@ import axios from "axios"
 import { useParams } from "react-router"
 import parse from 'html-react-parser'
 import { Link } from "react-router-dom"
+import '../App.css'
+
 
 
 export default function GameDetail(){
@@ -18,35 +20,39 @@ export default function GameDetail(){
             setGame(null)
         } // clean up
     }, [])
-        return <div className='detalleDeJuego'> 
-                <Link to='/home'>
-            <button>To Home</button>
-            </Link>
-        {
+        return <div > 
+
+            {
         
-            game ?
-            <>
-            <h2> {game.name} </h2>
-            <img src={game.background_image} style={{width: '20vw'}} alt= 'portada de juego' /> 
-            <h4> Generos: {game.genres.map(g => g.name).join(", ")} </h4>
-            <h4> Descripción del Juego: <br />
-                 {parse(game.description)} </h4>
-            <h4> Fecha de lanzamiento: {game.released} </h4>
-            <h4> Rating: {game.rating} </h4>
-            <h4> Plataformas compatibles: {game.platforms.join(", ")} </h4>
-            </> :
-            <div> cargando </div>
+                game ?
+                <>
+                <div className='detalleDeJuego'>
+                    <div className='divTitulos'>
+                        {game.name}
+                    </div>
+                    <div>
+                        <img src={game.background_image} style={{width: '20vw'}} alt= 'portada de juego' /> 
+                    </div>
+                    <div className='divGenres'>
+                        Generos: {game.genres.map(g => g.name).join(", ")}
+                    </div>
+                    <div className='descriptionGame'>
+                        Descripción del Juego: <br />
+                        {parse(game.description)}
+                    </div>
+                    <div className='lanzamientoGame'>
+                        Fecha de lanzamiento: {game.released}
+                    </div>
+                    <div className='lanzamientoGame'>
+                        Rating: {game.rating} 
+                    </div>
+                    <div className='lanzamientoGame'>
+                        Plataformas compatibles: {game.platforms.join(", ")}
+                    </div>
+                </div>
+                </> :
+                <div className='botonCargando'>   </div>
         }
-    </div>
+                </div>
 }
 
-
-/*
-[X] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
-[X] Descripción
-[X] Fecha de lanzamiento
-[X] Rating
-[X] Plataformas
-
-
-*/

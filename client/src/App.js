@@ -40,7 +40,11 @@ function App() {
             <AddGame/>
           </Route>
           <Route path='/:id'>
-            <SearchBar/>
+          <div className='navToHome'>
+            <Link to='/home'>
+              <button>To Home</button>
+            </Link>
+          </div>
             <GameDetail/>
           </Route>
         </Switch>
