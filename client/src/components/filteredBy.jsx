@@ -16,7 +16,6 @@ function FilteredBy({orderBy, genres, filterBy, getGenres}) {
         filterBy(e.target.value)
     }
 
- 
     return (
         <div className='container-div'>
             <select  className="selectCont" onChange={handleSelect} name="" id="">
@@ -37,7 +36,6 @@ function FilteredBy({orderBy, genres, filterBy, getGenres}) {
 
 const mapStateToProps = (state) => {
     return {
-
         genres: state.genres
     }
 }

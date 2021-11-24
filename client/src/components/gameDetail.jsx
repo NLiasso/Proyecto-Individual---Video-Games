@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from "react-router"
 import parse from 'html-react-parser'
-import { Link } from "react-router-dom"
+//import { Link } from "react-router-dom"
 import '../App.css'
 
 
@@ -20,39 +20,43 @@ export default function GameDetail(){
             setGame(null)
         } // clean up
     }, [])
-        return <div > 
-
+        return  <div >
             {
-        
-                game ?
-                <>
-                <div className='detalleDeJuego'>
-                    <div className='divTitulos'>
-                        {game.name}
+                    game ?
+                    <>
+                    <div className='detalleDeJuego'>
+                        <div className='divTitulos'>
+                            {game.name}
+                        </div>
+                        <div>
+                            <img src={game.background_image} style={{width: '20vw'}} alt= 'portada de juego' /> 
+                        </div>
+                        <div className='divGenres'>
+                            Generos: {game.genres.map(g => g.name).join(", ")}
+                        </div>
+                        <div className='descriptionGame'>
+                            Descripción del Juego: <br/>
+                            {parse(game.description)}<br/>
+                            <br/>
+                        </div>
+                        <div className='lanzamientoGame'>
+                            Fecha de lanzamiento: {game.released}
+                            <br/><br/>
+                        </div>
+                        <div className='lanzamientoGame'>
+                            Rating: {game.rating}
+                            <br/>
+                            <br/>
+                        </div>
+                        <div className='lanzamientoGame'>
+                            Plataformas compatibles: {game.platforms.join(", ")}
+                        </div>
+                    
                     </div>
-                    <div>
-                        <img src={game.background_image} style={{width: '20vw'}} alt= 'portada de juego' /> 
-                    </div>
-                    <div className='divGenres'>
-                        Generos: {game.genres.map(g => g.name).join(", ")}
-                    </div>
-                    <div className='descriptionGame'>
-                        Descripción del Juego: <br />
-                        {parse(game.description)}
-                    </div>
-                    <div className='lanzamientoGame'>
-                        Fecha de lanzamiento: {game.released}
-                    </div>
-                    <div className='lanzamientoGame'>
-                        Rating: {game.rating} 
-                    </div>
-                    <div className='lanzamientoGame'>
-                        Plataformas compatibles: {game.platforms.join(", ")}
-                    </div>
-                </div>
+                    <div className='espaciadoDiv'></div>
                 </> :
-                <div className='botonCargando'>   </div>
-        }
+                    <div className='botonCargando'>   </div>
+            }
                 </div>
 }
 

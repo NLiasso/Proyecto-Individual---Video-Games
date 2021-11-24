@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import axios from 'axios';
 import { searchGames } from '../store/actions';
 import { useDispatch } from 'react-redux';
 

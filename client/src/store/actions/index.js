@@ -43,21 +43,21 @@ export function fetchGame() {
 
 export function getGenres() {
     return async function (dispatch) {
-      try {
-        return axios.get(GENRES_URL).then((response) => {
-          dispatch({
-            type: GET_GENRES,
-            payload: response.data,
-          });
+        try {
+            return axios.get(GENRES_URL).then((response) => {
+                dispatch({
+                    type: GET_GENRES,
+                    payload: response.data,
+                });
         });
       } catch (error) {
         console.log("Es un error", error);
       }
     };
-  }
+}
 
 
-  export function postGame(datos){
+export function postGame(datos){
     let url = `http://localhost:3001/videogame`;
     return async (dispatch) => {
         return await axios({
@@ -116,18 +116,3 @@ export function filterBy(order) {
       dispatch({ type: ORDER_BY, payload: order });
     };
   }
-  
-
-
-  
-//   export function postGame(datos){
-//       console.log(datos)
-//     return async function(){
-//         let postgame = await axios.post('http://localhost:3001/videogame', datos)
-//         //console.log(postgame.data)
-//         return {
-//             type: postSubmit,
-//             postgame: postgame.data
-//         }
-//     }
-// }

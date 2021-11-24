@@ -12,15 +12,14 @@ export default function Games (){
 
   const [page, setPage] = useState(0)
   const [pages, setPages] = useState(paginado(games))
-  //console.log(pages)
   function paginado(juegos){
     let arrGames = []
     while(games.length>0){
       arrGames.push(juegos.slice(0,15))
       juegos = juegos.slice(15, juegos.length-1)
       if(juegos.length<=15){
-      arrGames.push(juegos)
-      break
+        arrGames.push(juegos)
+        break
       }
     }
     return arrGames
@@ -33,20 +32,19 @@ export default function Games (){
 
     let dispatch = useDispatch()
     useEffect(() => {
-        dispatch(fetchGames())
+      dispatch(fetchGames())
     }, [])
-    //console.log(games)
+    
     return <div className='divGames'>
-            {pages.length && pages[page].map((game)=>{
-              return <Game id= {game.id} name={game.name} image={game.background_image} key={game.id} genres={game.genres}/>
-            })}
-            <br></br>
-        <div>{pages.length && <Paginado
-        page={page}
-        setPage={setPage}
-        pages={pages}
-        />}
-        </div>
-    </div>
-
+              {pages.length && pages[page].map((game)=>{
+                return <Game id= {game.id} name={game.name} image={game.background_image} key={game.id} genres={game.genres}/>
+              })}
+              <br></br>
+              <div>{pages.length && <Paginado
+                page={page}
+                setPage={setPage}
+                pages={pages}
+                />}
+              </div>
+            </div>
 }

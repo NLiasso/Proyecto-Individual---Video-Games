@@ -9,7 +9,7 @@ export default function Order (){
         dispatch(sortByName(e.target.value))
     }
     return <select name='select' onChange={onSelectChange} defaultValue={DESCENDENTE}>
-        <option value={ASCENDENTE}> Ascendente ALFABETICO</option>        
-        <option value={DESCENDENTE}> Descendente ALFABETICO</option>        
-        </select>
+                <option value={ASCENDENTE}> Ascendente ALFABETICO</option>        
+                <option value={DESCENDENTE}> Descendente ALFABETICO</option>        
+            </select>
 }
