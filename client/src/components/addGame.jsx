@@ -214,25 +214,28 @@ export default function AddGame(){
                 </div>
                     <button type="submit" >Create</button>
                 <div>
-                <div>
-                <h4>platforms selected:</h4>
-                    
-                {
+                <div >
+                    <h4>platforms selected:</h4>
+                </div>
+                <div className='selectedThings'>
+                    {
                     input.platforms.map(el =>
-                        <div >
-                            <p>{el}</p>
-                            <button onClick={(e)=> handleDeletePlat(el)} >X</button>
+                        <div>
+                            <p>{el} <button onClick={(e)=> handleDeletePlat(el)} >X</button></p>
+                            
                         </div>
                     )
-                }
+                    }
                 </div>
                 <div >
                     <h4>Genres selected:</h4>
+                </div>
+                <div className='selectedThings'>
                 {
                     input.genrename.map(el =>
                         <div>
-                            <p>{el}</p>
-                            <button onClick={(e)=> handleDelete(el)} id="but123" >x</button>
+                            <p>{el} <button onClick={(e)=> handleDelete(el)} id="but123" >x</button></p>
+                            
                         </div>
                     )
                 }
