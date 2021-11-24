@@ -4,14 +4,8 @@ const { Videogame, Genre } = require("../db.js");
 const axios = require('axios');
 const {API_KEY} = process.env;
 const { v4: uuidv4 } = require('uuid');
-const { Op } = require ("sequelize");
+//const { Op } = require ("sequelize");
 
-
-
-// [ ] GET /videogame/{idVideogame}:
-// Obtener el detalle de un videojuego en particular
-// Debe traer solo los datos pedidos en la ruta de detalle de videojuego
-// Incluir los géneros asociados
 
 
 
@@ -21,16 +15,15 @@ router.get('/:id', async (req, res, next) => {
     try {
 
         const id = req.params.id;
-   //     console.log(id)
-        //type oF !integrer = mio.... convertir el id a entero, si me da error entonces es mio.  Number(id)    o ParseInt
+        //console.log(id)
+        
         if(id.length > 8) {
             //es mio
             let  videogame = await Videogame.findByPk(
                 id,
                 { include: Genre },
             );
-            //console.log(videogame.id)
-         
+            
             let filterData = {
                 name: videogame.name,
                 id: videogame.id,
@@ -46,9 +39,7 @@ router.get('/:id', async (req, res, next) => {
                 }),
                 platforms: videogame.platforms
             }
-            //console.log(filterData)
-            //console.log(videogame.id)
-            
+
             return res.send(filterData)
 
         } else {
@@ -75,8 +66,6 @@ router.get('/:id', async (req, res, next) => {
 
             return res.send(juego)
         }
-
-        
     } catch(error) {
         next({error: "Error, el numero no existe"})
     }
@@ -93,18 +82,10 @@ router.post('/', async (req, res, next) =>{
         released,
         rating, 
         genres
-      } = req.body;
+              } = req.body;
 
-
-    try{ 
-        // const genreDB = await Genre.findAll({ 
-        //     where: {name: genre},
-        // })
-        // if(genreDB.length !== genre.length){
-        //     return res.json({error: 'Genero no encontrado'})
-        //}
-        
-            const videoGameCreate = await Videogame.create({ 
+    try{
+        const videoGameCreate = await Videogame.create({ 
             id: uuidv4(),
             name,
             description,
@@ -119,7 +100,6 @@ router.post('/', async (req, res, next) =>{
 
     }catch(error){
         res.status(400).json({message: error})
-        //console.log(error)
     }
 
 })

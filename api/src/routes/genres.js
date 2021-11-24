@@ -4,7 +4,7 @@ const router = express.Router()
 const axios = require('axios').default;
 require('dotenv').config();
 const {API_KEY} = process.env;
-const { Videogame } = require("../db.js");
+//const { Videogame } = require("../db.js");
 
 
 router.get('/', async (req, res) => {
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
         }
 })
 
-
+module.exports = router;
 
 
 
@@ -93,4 +93,3 @@ router.get('/', async (req, res) => {
 
 
 
-module.exports = router;

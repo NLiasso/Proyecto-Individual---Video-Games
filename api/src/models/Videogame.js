@@ -23,7 +23,6 @@ module.exports = (sequelize) => {
     },
     rating:{
       type: DataTypes.DECIMAL({length: 6, decimals: 2}, )
-      // promedio = suma de arr / arr.length -1
     },
     platforms:{
       type: DataTypes.ARRAY(DataTypes.STRING),

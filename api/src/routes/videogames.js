@@ -6,29 +6,6 @@ const axios = require('axios');
 const db = require("../db.js");
 const {API_KEY} = process.env;
 
-// to number= primeros 3 caracteres
-// 
-// ID Propio = toNumber(name(split))
-
-
-// GET /videogames:
-// Obtener un listado de los videojuegos  :  Listo los juegos de la DB, no hay nada de la apikey
-// Debe devolver solo los datos necesarios para la ruta principal:
-// O sea que tiene que devolver=
-// ID: * No puede ser un ID de un videojuego ya existente en la API rawg
-// Nombre *....
-// Descripción * FALTA
-// Fecha de lanzamiento....
-// Rating...
-// Plataformas *....
-
-
-// GET /videogames?name="...":
-// Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-// Si no existe ningún videojuego mostrar un mensaje adecuado
-
-
-
 
 // Vamos a trabajar en una sola función, para mayor comodidad (por ahora).
 router.get('/', async (req, res, next) => {   
@@ -38,14 +15,17 @@ router.get('/', async (req, res, next) => {
     if(name) {
         let gamesApi = axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
         let gamesDb = await Videogame.findAll({
-            where: { name:{ [Op.iLike]: "%" + name + "%" }},
+            where: {
+                    name:{
+                        [Op.iLike]: "%" + name + "%" 
+                    }
+            },
             include: Genre,
             limit: 15,
         })
         Promise.all([
             gamesApi, 
             gamesDb,
-            //console.log(gamesDb)
         ])
         
         .then((response => {
@@ -63,7 +43,7 @@ router.get('/', async (req, res, next) => {
                     background_image: e.background_image,  //Imagen para el front, no borrar
                     genres: e.genreGames.map((game) => {
                        return game.name
-                    }), //  REVISAR ESTO
+                    }),
                     createdInDb: e.createdInDb || true   //Forzamos el creado en db a true. Revisar esto
             };
             })
@@ -102,12 +82,9 @@ router.get('/', async (req, res, next) => {
                 attibutes: ['genre_id', 'genre_name', 'id']
             }
         })
-//        console.log(gamesDb)
-
-           
            
         let juegosDeApiPages = []
-       // gameApi = axios.get(`https://api.rawg.io/api/games?key=${KEY}`) //promesa
+
        let page1 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)).data;
        let page2 = (await axios.get(page1.next)).data;
        let page3 = (await axios.get(page2.next)).data;
@@ -134,9 +111,10 @@ router.get('/', async (req, res, next) => {
         
         
         const filterFromDb = gameDb
-        //console.log(filterFromDb)
         const filtDb = filterFromDb.map((dB) => {
-        //Este return es de mi DB, ojo
+        
+        
+            //----------Este return es de mi DB, ojo
         
             return {
                 id: dB.id,
@@ -179,85 +157,6 @@ router.get('/', async (req, res, next) => {
 
     }
 })
-
-
-
-// router.get("/", async function (req, res){
-//     const name = req.query.name;
-
-//     try {
-//         if(name){
-//             const listaDeJuegos = await Videogame.findAll({
-//                 where: {
-//                     name:{
-//                         [Op.iLike]: `%${name}%`
-//                     }
-//                 },
-//                 limit: 15,
-//             });
-//             res.status(201).json(listaDeJuegos);
-//         } else {
-//             const videogames = await Videogame.findAll();
-//             res.json(videogames);
-//         }
-//     } catch (error){
-//         res.status(500).send(error);
-//     }
-
-
-// })
-
-
-
-
-
-
-
-// router.get('/', async (req, res) => {
-//   const { name } = req.query
-//   try {
-//       if (name) {
-//           const infoByName = await getInfoByName(name)
-//           res.json(infoByName);
-//       }
-//       else{
-//           const allDate = await getAllInfo()   
-//           res.json(allDate);
-//       }
-//       }
-//       catch(e){
-//           res.send('Juego no encontrado')
-//       }
-// })
-
-// router.get('/', async (req, res) => {
-//   const name = req.query.name
-
-
-//   try {
-//       if (name) {
-//           let juegoName = await Videogame.findAll({
-//               where: {
-//                   name
-//               },
-//               include: Genre
-//           })
-//           return res.json(juegoName)
-//       } else {
-//         let juegoName = await Videogame.findAll()
-//       }
-//       const gameName = await getInfoByName(name)   
-//       res.json(gameName);
-//       }
-//       catch(e){
-//           res.send('Nombre no encontrado')
-//       }
-// })
-
-
-
-
-
 
 
 
